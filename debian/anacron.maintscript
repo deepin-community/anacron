@@ -1,2 +1,0 @@
-rm_conffile /etc/init/anacron.conf 2.3-26~
-rm_conffile /etc/apm/event.d/anacron 2.3-28~

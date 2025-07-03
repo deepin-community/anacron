@@ -17,6 +17,8 @@ EnvironmentFile=/etc/default/anacron
 ExecStart=/usr/sbin/anacron -d -q $ANACRON_ARGS
 IgnoreSIGPIPE=false
 KillMode=mixed
+TimeoutStopSec=infinity
+
 # Use SIGUSR1 to stop gracefully
 KillSignal=SIGUSR1
 
