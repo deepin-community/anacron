@@ -1,0 +1,21 @@
+anacron (2.3-36) unstable; urgency=medium
+
+  If you run Debian testing/unstable and ever installed anacron 2.3-33 on
+  a systemd based system, then anacron will no longer be enabled and the
+  daily/weekly/monthly cron jobs will not be run until the anacron timer is
+  reenabled.
+  
+  Since not all cron jobs have migrated to systemd timers, Debian
+  testing/unstable systems with systemd and anacron may be missing
+  some essential cron jobs, such as making backups of aptitude state.
+  
+  To see if a system is affected you can use these commands:
+
+    zgrep -i anacron.*2.3-33 /var/log/apt/history.log*
+    systemctl status anacron.service anacron.timer
+
+  To re-enable anacron you can use this command:
+
+    sudo systemctl enable --now anacron.service anacron.timer
+
+ -- Lance Lin <lq27267@gmail.com>  Wed, 11 Jan 2023 20:18:12 +0700

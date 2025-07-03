@@ -10,7 +10,6 @@ export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 # package maintainers to append CFLAGS
 #export DEB_CFLAGS_MAINT_APPEND  = -Wall -pedantic
 # package maintainers to append LDFLAGS
-export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
 
 -include /usr/share/dpkg/architecture.mk
 ifneq ($(DEB_HOST_GNU_TYPE),$(DEB_BUILD_GNU_TYPE))
@@ -25,7 +24,6 @@ endif
 override_dh_auto_install:
 	$(MAKE) install PREFIX=debian/anacron MANDIR=debian/anacron/usr/share/man
 	install -D -m 644 debian/anacrontab debian/anacron/etc/anacrontab
-	install -D -m 644 debian/anacron.timer debian/anacron/lib/systemd/system/anacron.timer
 
 override_dh_installcron:
 	dh_installcron
@@ -33,6 +31,3 @@ override_dh_installcron:
 
 override_dh_installinit:
 	dh_installinit --no-start
-
-override_dh_missing:
-	dh_missing --fail-missing

@@ -1,8 +1,137 @@
-anacron (2.3-deepin1) unstable; urgency=medium
+anacron (2.3-deepin43) UNRELEASED; urgency=medium
 
-  * Rebuild
+  * remove anaron.timer
+    https://github.com/deepin-community/anacron/pull/1
 
- -- Deepin Packages Builder <packages@deepin.org>  Mon, 14 Nov 2022 17:35:27 +0800
+ -- Cryolitia <cryolitia@deepin.org>  Tue, 08 Jul 2025 14:47:24 +0800
+
+anacron (2.3-43) unstable; urgency=medium
+
+  [ Christian Goeschel Ndjomouo ]
+  * global.h, runjob.c: Clean up temporary files (Closes: #1092269)
+
+  [ наб ]
+  * d/cron.d: move [ -x test into if so it doesn't fail the job if it
+    fails (Closes: #1106000)
+
+ -- Lance Lin <lq27267@gmail.com>  Mon, 02 Jun 2025 18:08:43 +0700
+
+anacron (2.3-42) unstable; urgency=medium
+
+  * main.c: Fix FTBFS with GCC-15
+
+ -- Lance Lin <lq27267@gmail.com>  Tue, 25 Feb 2025 19:38:16 +0700
+
+anacron (2.3-41) unstable; urgency=medium
+
+  * d/control: Update standards version to 4.7.0
+  * log.c: Fix conflicting types for built-in function 'log'
+  * readtab.c: Remove set but unused 'period_len' and check
+    return value of 'fchdir'
+  * runjob.c: Remove const for 'putenv' argument, remove unused
+    variable 'int r', and replace 'tempnam' usage with 'mkstemp'
+
+ -- Lance Lin <lq27267@gmail.com>  Tue, 24 Dec 2024 21:37:51 +0700
+
+anacron (2.3-40) unstable; urgency=medium
+
+  [ наб <nabijaczleweli@nabijaczleweli.xyz> ]
+  * anacrontab.5: Mention @yearly period_name (Closes: #1067752)
+
+  [ Lance Lin ]
+  * d/control, d/README.debian, README: Mention yearly period scheduling
+    in documentation
+  * d/anacrontab: Add @yearly to default anacrontab
+  * d/anacron.0anacron.cron.yearly: Install yearly anacron job
+  * d/copyright: Add myself to debian/* copyright for 2024
+  * d/s/local-patch-header: Set Forwarded to not-needed, since upstream
+    is no longer maintained
+
+ -- Lance Lin <lq27267@gmail.com>  Tue, 26 Mar 2024 21:07:54 +0700
+
+anacron (2.3-39) unstable; urgency=medium
+
+  * d/control: Remove dependency on lsb-base
+  * d/patches/0001-Fix-typo-in-log-message-ststus-status.patch:
+    + Merge with single-debian-patch
+    + runjob.c: Fix typo in log message, ststus to status (Closes: #987153)
+
+ -- Lance Lin <lq27267@gmail.com>  Thu, 28 Sep 2023 20:44:47 +0700
+
+anacron (2.3-38.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Let dh_installsystemd install anacron.timer. (Closes: #1052637)
+
+ -- Helmut Grohne <helmut@subdivi.de>  Mon, 25 Sep 2023 15:47:01 +0200
+
+anacron (2.3-38) unstable; urgency=medium
+
+  * anacron.8: Editorial fixes (Closes: #1040885)
+  * anacrontab.5: Editorial fixes (Closes: #1040887)
+
+ -- Lance Lin <lq27267@gmail.com>  Thu, 13 Jul 2023 22:21:18 +0700
+
+anacron (2.3-37) unstable; urgency=medium
+
+  * anacron.8: Update manpage
+    + Specify crontab for MAILTO variable (Closes: #1031774)
+    + Fix formatting (Closes: #964504)
+
+ -- Lance Lin <lq27267@gmail.com>  Wed, 05 Jul 2023 21:59:27 +0700
+
+anacron (2.3-36) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Trim trailing whitespace.
+  * Refer to specific version of license GPL-2+.
+  * Remove obsolete field Name from debian/upstream/metadata (already present in
+    machine-readable debian/copyright).
+
+  [ Lance Lin ]
+  * Add d/NEWS: (Closes: #1028205)
+  * d/control: Bump standards version to 4.6.2
+  * d/copyright: Update debian copyright year to 2023
+
+ -- Lance Lin <lq27267@gmail.com>  Wed, 11 Jan 2023 20:32:46 +0700
+
+anacron (2.3-35) unstable; urgency=medium
+
+  * d/anacron.postrm: delete removal of symlinks (Closes: #1019554)
+
+ -- Lance Lin <lqii254@protonmail.com>  Tue, 20 Sep 2022 20:15:22 +0700
+
+anacron (2.3-34) unstable; urgency=medium
+
+  [ Melvin Vermeeren ]
+  * d/anacron.service: add TimeoutStopSec=infinity (Closes: #915379)
+
+ -- Lance Lin <lqi254@protonmail.com>  Thu, 25 Aug 2022 20:19:37 +0700
+
+anacron (2.3-33) unstable; urgency=medium
+
+  * d/anacron.postrm: Add cleanup for dangling symlinks (Closes: #993348)
+  * d/control: Update maintainer (Closes: #897138)
+  * d/control: Bump standards version to 4.6.1
+  * d/copyright: Updated copyright to DEP5 standard
+
+ -- Lance Lin <LQi254@protonmail.com>  Fri, 08 Jul 2022 19:00:22 +0700
+
+anacron (2.3-32) unstable; urgency=medium
+
+  * QA upload.
+
+  [ Debian Janitor ]
+  * Remove constraints unnecessary since buster:
+    + anacron: Drop versioned constraint on lsb-base in Depends.
+    + Remove 2 maintscript entries from 1 files.
+  * Bump debhelper from old 12 to 13.
+    + debian/rules: Drop --fail-missing argument to dh_missing, which is now the
+      default.
+  * Set upstream metadata fields: Name, Repository.
+  * Avoid explicitly specifying -Wl,--as-needed linker flag.
+
+ -- Jelmer Vernooĳ <jelmer@debian.org>  Wed, 25 May 2022 14:30:37 +0100
 
 anacron (2.3-31) unstable; urgency=medium
 
